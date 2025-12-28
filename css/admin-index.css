@@ -89,7 +89,7 @@
     right: 4px;
     width: 12px;
     height: 12px;
-    background-image: url(/assets/icons/delete.png);
+    background-image: url(/shfe-diplom/assets/icons/delete.png);
     background-size: cover;
 }
 
@@ -307,7 +307,7 @@
 
 .cube.vip {
     background-color: #B0D6D8;
-    background-image: url(../assets/images/vip-cube.png);
+    background-image: url(/shfe-diplom/assets/images/vip-cube.png);
     border: 1px solid #0A828A;
     margin: 0 3px;
 }
@@ -481,7 +481,7 @@
 
 .hall-seat.vip {
     background-color: #B0D6D8;
-    background-image: url(../assets/images/vip-cube.png);
+    background-image: url(/shfe-diplom/assets/images/vip-cube.png);
     border: 1px solid #0A828A;
 }
 
