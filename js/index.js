@@ -172,6 +172,6 @@ document.addEventListener('click', (e) => {
     localStorage.setItem('hallName', hallName);
     localStorage.setItem('hallPriceStandart', hallPriceStandart);
     localStorage.setItem('hallPriceVip', hallPriceVip);
-    window.location.href = '../html/client-hall.html';
+    window.location.href = '/shfe-diplom/html/client-hall.html';
 });
 

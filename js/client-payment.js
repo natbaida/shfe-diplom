@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 JSON.stringify(response.result)
             );
 
-            location.href = 'client-ticket.html';
+            location.href = '/shfe-diplom/html/client-ticket.html';
 
         } catch (err) {
             console.error(err);

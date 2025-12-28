@@ -15,7 +15,7 @@ const date = localStorage.getItem('date');
 let selectedSeats = [];
 if (!seanceId || !date) {
     alert('Нет данных о сеансе');
-    location.href = 'index.html';
+    location.href = '/shfe-diplom/index.html';
 }
 
 async function loadHall() {
@@ -89,7 +89,7 @@ bookingBtn.addEventListener('click', () => {
 
     localStorage.setItem('bookingData', JSON.stringify(bookingData));
 
-    window.location.href = '../html/client-payment.html';
+    window.location.href = '/shfe-diplom/html/client-payment.html';
 });
 
 function calculateTotalPrice() {
