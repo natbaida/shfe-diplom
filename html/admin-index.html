@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить фильм в расписание | Идем в кино</title>
+    <link rel="stylesheet" href="../css/admin-index.css">
+    <link rel="stylesheet" href="../css/admin-popup.css">
+    <link rel="stylesheet" href="../css/admin-global.css">
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logoadmin.svg" alt="Logo">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="add-film">
+
+                <div class="form-section">
+                    <div class="section-top">
+                        <div class="section-container">
+                            <div class="circle"></div>
+                            <h3 class="section-name">Управление залами</h3>
+                        </div>
+                        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="24" height="16" fill="url(#pattern0_16_904)"/>
+                        <defs>
+                        <pattern id="pattern0_16_904" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_16_904" transform="scale(0.0208333 0.03125)"/>
+                        </pattern>
+                        <image id="image0_16_904" width="48" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGCSURBVHgBzZjhcYQgEIXXVHAlXAmXDlLCdXDpRDuwBK+DpANLsATSQdLBC0RMGHPqsgvoN8PM/RD4HqKsRxQA4Gxbb9snRtzvK+2EnfvFO8A7dc5x6eJLID6nocK4ORdcnONlfrFbeYN1blQIO9frhov5vRNM+WIh7BxXpoux7eQ6dODz//allV/bxo+oCfzVzxoC406IkXcYggyDpbeBXN5AgOscmzppCI28c3+yY9xJxtm2XhPC9+39WBLepXtvfidOFInrA/nK/6w+gldp7NM/Z4gJ4eUHyHl4mG0dHlv0EQHeoOO2NLA2RMeQv0PHbWuCGjralbEb6KiJQ4IQzW7yOUIUlw8mbqGjgV6+JQ3QP3QaOkoB/r6KSsJ+LXMCaA+eWNgHY0VM/IADyesWLh+2PVdV9UWpga5y5GCQsEwvHcJkl88YwhSTD0JoK9iJrN/ZuUPsJx+E0FSwxf5rWkUY4hjyE4gr/mTFWW6YIY4pP7ER4tjyExifibB26nPt+W85xjZJlGZcvgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                    </div>
+                    
+                    <div class="section-area">
+                        <p class="section-area-text">Доступные залы:</p>
+                        <ul class="halls-list">
+                            
+                        </ul>
+                        <button class="btn create-hall-btn" id="create-hall">Создать зал</button>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-top">
+                        <div class="section-container">
+                            <div class="circle"></div>
+                            <h3 class="section-name">Конфигурация залов</h3>
+                        </div>
+                        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="24" height="16" fill="url(#pattern0_16_904)"/>
+                        <defs>
+                        <pattern id="pattern0_16_904" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_16_904" transform="scale(0.0208333 0.03125)"/>
+                        </pattern>
+                        <image id="image0_16_904" width="48" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGCSURBVHgBzZjhcYQgEIXXVHAlXAmXDlLCdXDpRDuwBK+DpANLsATSQdLBC0RMGHPqsgvoN8PM/RD4HqKsRxQA4Gxbb9snRtzvK+2EnfvFO8A7dc5x6eJLID6nocK4ORdcnONlfrFbeYN1blQIO9frhov5vRNM+WIh7BxXpoux7eQ6dODz//allV/bxo+oCfzVzxoC406IkXcYggyDpbeBXN5AgOscmzppCI28c3+yY9xJxtm2XhPC9+39WBLepXtvfidOFInrA/nK/6w+gldp7NM/Z4gJ4eUHyHl4mG0dHlv0EQHeoOO2NLA2RMeQv0PHbWuCGjralbEb6KiJQ4IQzW7yOUIUlw8mbqGjgV6+JQ3QP3QaOkoB/r6KSsJ+LXMCaA+eWNgHY0VM/IADyesWLh+2PVdV9UWpga5y5GCQsEwvHcJkl88YwhSTD0JoK9iJrN/ZuUPsJx+E0FSwxf5rWkUY4hjyE4gr/mTFWW6YIY4pP7ER4tjyExifibB26nPt+W85xjZJlGZcvgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                    </div>
+
+                    <div class="section-area">
+                        <p class="section-area-text">Выберите зал для конфигурации:</p>
+
+                        <div class="hall-select-btn-list">
+                            
+                        </div>
+                        
+
+                        <p class="section-area-text">Укажите количество рядов и максимальное количество кресел в ряду:</p>
+                        
+                        <div class="places-count-block">
+                            <div class="places-count">
+                            <label for="rows" class="input-places-label">Рядов, шт.</label>
+                            <input type="text" class="input-places" id="rows" name="rows">
+                            </div>
+                            <p class="x">x</p>
+                            <div class="places-count">
+                                <label for="places" class="input-places-label">Мест, шт.</label>
+                                <input type="text" class="input-places" id="places" name="places">
+                            </div>
+                        </div>
+
+                        <p class="section-area-text">Теперь вы можете указать типы кресел на схеме зала:</p>
+
+                        <div class="seats-legend">
+                            <div class="seat">
+                                <div class="cube common"></div>
+                                <p class="seats-name"> — обычные кресла</p>
+                            </div>
+                            <div class="seat">
+                                <div class="cube vip"></div>
+                                <p class="seats-name"> — VIP кресла</p>
+                            </div>
+                            <div class="seat">
+                                <div class="cube occupied"></div>
+                                <p class="seats-name"> — заблокированные (нет кресла)</p>
+                            </div>
+                        </div>
+
+                        <p class="change-seat-text">Чтобы изменить вид кресла, нажмите по нему левой кнопкой мыши</p>
+
+                        <div class="scheme">
+                            <h3>Экран</h3>
+                            <div class="hall-grid" id="hall-grid">
+                            </div>
+                        </div>
+
+                        <div class="btn-layout">
+                            <button class="btn white" id="layout-cancel-btn">Отмена</button>
+                            <button class="btn" id="layout-config-btn">Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-top">
+                        <div class="section-container">
+                            <div class="circle"></div>
+                            <h3 class="section-name">Конфигурация цен</h3>
+                        </div>
+                        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="24" height="16" fill="url(#pattern0_16_904)"/>
+                        <defs>
+                        <pattern id="pattern0_16_904" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_16_904" transform="scale(0.0208333 0.03125)"/>
+                        </pattern>
+                        <image id="image0_16_904" width="48" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGCSURBVHgBzZjhcYQgEIXXVHAlXAmXDlLCdXDpRDuwBK+DpANLsATSQdLBC0RMGHPqsgvoN8PM/RD4HqKsRxQA4Gxbb9snRtzvK+2EnfvFO8A7dc5x6eJLID6nocK4ORdcnONlfrFbeYN1blQIO9frhov5vRNM+WIh7BxXpoux7eQ6dODz//allV/bxo+oCfzVzxoC406IkXcYggyDpbeBXN5AgOscmzppCI28c3+yY9xJxtm2XhPC9+39WBLepXtvfidOFInrA/nK/6w+gldp7NM/Z4gJ4eUHyHl4mG0dHlv0EQHeoOO2NLA2RMeQv0PHbWuCGjralbEb6KiJQ4IQzW7yOUIUlw8mbqGjgV6+JQ3QP3QaOkoB/r6KSsJ+LXMCaA+eWNgHY0VM/IADyesWLh+2PVdV9UWpga5y5GCQsEwvHcJkl88YwhSTD0JoK9iJrN/ZuUPsJx+E0FSwxf5rWkUY4hjyE4gr/mTFWW6YIY4pP7ER4tjyExifibB26nPt+W85xjZJlGZcvgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                    </div>
+                    <div class="section-area">
+                        <p class="choose-price">Выберите зал для конфигурации:</p>
+                        <div class="hall-select-btn-list">
+                            
+                        </div>
+                        
+                        <div class="form-costs">
+                        <p class="choose-price">Установите цены для типов кресел:</p>
+                        <div class="prices-full-block first">
+                            <div class="places-count">
+                                <label for="common-price" class="input-places-label">Цена, рублей</label>
+                                <input type="text" class="input-places" id="common-price">
+                            </div>
+                            <div class="price-info">за <div class="cube common"></div> обычные кресла</div>
+                        </div>
+                        <div class="prices-full-block">
+                            <div class="places-count">
+                                <label for="vip-price" class="input-places-label">Цена, рублей</label>
+                                <input type="text" class="input-places short" id="vip-price">
+                            </div>
+                            <div class="price-info">за <div class="cube vip"></div> VIP кресла</div>
+                        </div>
+                        <div class="btn-layout margin-t">
+                            <button class="btn white">Отмена</button>
+                            <button class="btn" id="save-prices">Сохранить</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-top">
+                        <div class="section-container">
+                            <div class="circle"></div>
+                            <h3 class="section-name">Сетка сеансов</h3>
+                        </div>
+                        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="24" height="16" fill="url(#pattern0_16_904)"/>
+                        <defs>
+                        <pattern id="pattern0_16_904" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_16_904" transform="scale(0.0208333 0.03125)"/>
+                        </pattern>
+                        <image id="image0_16_904" width="48" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGCSURBVHgBzZjhcYQgEIXXVHAlXAmXDlLCdXDpRDuwBK+DpANLsATSQdLBC0RMGHPqsgvoN8PM/RD4HqKsRxQA4Gxbb9snRtzvK+2EnfvFO8A7dc5x6eJLID6nocK4ORdcnONlfrFbeYN1blQIO9frhov5vRNM+WIh7BxXpoux7eQ6dODz//allV/bxo+oCfzVzxoC406IkXcYggyDpbeBXN5AgOscmzppCI28c3+yY9xJxtm2XhPC9+39WBLepXtvfidOFInrA/nK/6w+gldp7NM/Z4gJ4eUHyHl4mG0dHlv0EQHeoOO2NLA2RMeQv0PHbWuCGjralbEb6KiJQ4IQzW7yOUIUlw8mbqGjgV6+JQ3QP3QaOkoB/r6KSsJ+LXMCaA+eWNgHY0VM/IADyesWLh+2PVdV9UWpga5y5GCQsEwvHcJkl88YwhSTD0JoK9iJrN/ZuUPsJx+E0FSwxf5rWkUY4hjyE4gr/mTFWW6YIY4pP7ER4tjyExifibB26nPt+W85xjZJlGZcvgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>  
+                    </div>
+                    <div class="section-area">
+                        <button class="btn add-action" id="add-film">Добавить фильм</button>
+                        
+                        <div class="films-list">
+                            
+                        </div>
+                        
+                        <div class="schedule">
+                            
+                        </div>
+                        <div class="btn-layout">
+                            <button class="btn white">Отмена</button>
+                            <button class="btn">Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-top">
+                        <div class="section-container">
+                            <div class="circle"></div>
+                            <h3 class="section-name">Открыть продажи</h3>
+                        </div>
+                        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="24" height="16" fill="url(#pattern0_16_904)"/>
+                        <defs>
+                        <pattern id="pattern0_16_904" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_16_904" transform="scale(0.0208333 0.03125)"/>
+                        </pattern>
+                        <image id="image0_16_904" width="48" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGCSURBVHgBzZjhcYQgEIXXVHAlXAmXDlLCdXDpRDuwBK+DpANLsATSQdLBC0RMGHPqsgvoN8PM/RD4HqKsRxQA4Gxbb9snRtzvK+2EnfvFO8A7dc5x6eJLID6nocK4ORdcnONlfrFbeYN1blQIO9frhov5vRNM+WIh7BxXpoux7eQ6dODz//allV/bxo+oCfzVzxoC406IkXcYggyDpbeBXN5AgOscmzppCI28c3+yY9xJxtm2XhPC9+39WBLepXtvfidOFInrA/nK/6w+gldp7NM/Z4gJ4eUHyHl4mG0dHlv0EQHeoOO2NLA2RMeQv0PHbWuCGjralbEb6KiJQ4IQzW7yOUIUlw8mbqGjgV6+JQ3QP3QaOkoB/r6KSsJ+LXMCaA+eWNgHY0VM/IADyesWLh+2PVdV9UWpga5y5GCQsEwvHcJkl88YwhSTD0JoK9iJrN/ZuUPsJx+E0FSwxf5rWkUY4hjyE4gr/mTFWW6YIY4pP7ER4tjyExifibB26nPt+W85xjZJlGZcvgAAAABJRU5ErkJggg=="/>
+                        </defs>
+                        </svg>
+                    </div>
+                    <div class="section-area">
+                        <p class="select-hall-text">Выберите зал для конфигурации:</p>
+                        <div class="hall-select-btn-list last">
+                            
+                        </div>
+                        <div>
+                            <p class="open-ready-text">Всё готово к открытию</p>
+                            <button class="btn open-sale" id="sale-open">Открыть продажу билетов</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <section class="popup add-film hidden" id="popup-add-film">
+        <div class="container">
+            <div class="form">
+                <div class="form-title">
+                    <h2 class="title">Добавление фильма</h2>
+                    <div class="exit-svg js-close-popup">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="22" height="22" fill="url(#pattern0_59_41)"/>
+                        <defs>
+                        <pattern id="pattern0_59_41" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_59_41" transform="scale(0.00390625)"/>
+                        </pattern>
+                        <image id="image0_59_41" width="256" height="256" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAABnlBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////aMUgUAAAAiXRSTlMAAQIDBAUGBwgJCgsMDQ4PERMUFRcYGRscHR8gISIjJSYnKistLi8wMjM0OD9AQUNFR0lKTU9QUlRWV1hbXGFiZmdrbG1vcHFzdHV3eXt+f4CIiYuMjpKVmJqeoKKjpaaoqquvsLK0t7m6vL7AwcPFyszOz9PV2tze4OLk5ujp6+3v8fP19/n7/QNGy6MAAAdiSURBVHja5d0JW5RVGMbxMwzIoqKYpraapeaCtu9llhVuWVm2qFmplalFlmLmgkMCz7eOTYKYmfcsz3Kfw/kC9/n9Hby83nEG5wJPV1//yhUO8tR6VvX31iUHnjxwaYJmzh9Hn+2Ewvft/eLm7NUa37++QWbiwzFaeCZProfhb/1p0dXoxsvsL4T6EC09p1ZC8DcNL71a4znejcduU7Mz8TzAT/7Rplejy5x/Om9Qq3OyZuzv/rXV1ca2sI0cptbnfN3Uv2qkzd12M40cp3bnF8sCq2+1vduggt+0QIWfp0CV37BApZ+jQLXfrICHP72Aj9+ogJc/tYCf36SApz+tgK/foIC3P6WAv1+9QIA/vkCIX7lAkD+2QJhftUCgP65A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"/>
+                        </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="form-block">
+                    <form action="" method="get" class="login-form" id="add-film-form">
+                        <div class="form-item">
+                            <label for="film-name" class="input-label">Название фильма</label>
+                            <input type="text" class="form-input" id="film-name" name="film-name" placeholder="Например, «Гражданин Кейн»">
+                        </div>
+                        <div class="form-item">
+                            <label for="film-duration" class="input-label">Продолжительность фильма (мин.)</label>
+                            <input type="text" class="form-input" id="film-duration" name="film-duration">
+                        </div>
+                        <div class="form-item">
+                            <label for="film-description" class="input-label">Описание фильма</label>
+                            <textarea name="film-description" id="film-description" class="form-input textarea"></textarea>
+                        </div>
+                        <div class="form-item">
+                            <label for="film-country" class="input-label">Страна</label>
+                            <input type="text" class="form-input" id="film-country" name="film-country">
+                        </div>
+                        <div class="action-list">
+                            <button type="submit" class="btn">Добавить фильм</button>
+                            <a class="btn" id="upload-poster">Загрузить постер</a>
+                            <a class="btn white js-close-popup">Отменить</a>
+                        </div>
+                        <input type="file" id="poster-input" accept="image/png" hidden>
+                    </form>  
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="popup add-seans hidden" id="popup-add-seans">
+        <div class="container">
+            <div class="form">
+                <div class="form-title">
+                    <h2 class="title">Добавление сеанса</h2>
+                    <div class="exit-svg js-close-popup">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="22" height="22" fill="url(#pattern0_59_41)"/>
+                        <defs>
+                        <pattern id="pattern0_59_41" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_59_41" transform="scale(0.00390625)"/>
+                        </pattern>
+                        <image id="image0_59_41" width="256" height="256" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAABnlBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////aMUgUAAAAiXRSTlMAAQIDBAUGBwgJCgsMDQ4PERMUFRcYGRscHR8gISIjJSYnKistLi8wMjM0OD9AQUNFR0lKTU9QUlRWV1hbXGFiZmdrbG1vcHFzdHV3eXt+f4CIiYuMjpKVmJqeoKKjpaaoqquvsLK0t7m6vL7AwcPFyszOz9PV2tze4OLk5ujp6+3v8fP19/n7/QNGy6MAAAdiSURBVHja5d0JW5RVGMbxMwzIoqKYpraapeaCtu9llhVuWVm2qFmplalFlmLmgkMCz7eOTYKYmfcsz3Kfw/kC9/n9Hby83nEG5wJPV1//yhUO8tR6VvX31iUHnjxwaYJmzh9Hn+2Ewvft/eLm7NUa37++QWbiwzFaeCZProfhb/1p0dXoxsvsL4T6EC09p1ZC8DcNL71a4znejcduU7Mz8TzAT/7Rplejy5x/Om9Qq3OyZuzv/rXV1ca2sI0cptbnfN3Uv2qkzd12M40cp3bnF8sCq2+1vduggt+0QIWfp0CV37BApZ+jQLXfrICHP72Aj9+ogJc/tYCf36SApz+tgK/foIC3P6WAv1+9QIA/vkCIX7lAkD+2QJhftUCgP65A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"/>
+                        </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="form-block">
+                    <form action="" method="get" class="login-form">
+                        <div class="form-item">
+                            <label for="hall-name-first" class="input-label">Название зала</label>
+                            <select name="" id="seance-hall" class="form-input"></select>
+                        </div>
+                        <div class="form-item">
+                            <label for="film-name-first" class="input-label">Название фильма</label>
+                            <select name="" id="seance-film" class="form-input"></select>
+                        </div>
+                        <div class="form-item">
+                            <label for="seance-time" class="input-label">Время начала</label>
+                            <input
+                                    type="time"
+                                    class="form-input"
+                                    id="seance-time"
+                                    step="60"
+                                    required
+                            >
+                        </div>
+                        <div class="action-list">
+                            <button type="submit" class="btn">Добавить фильм</button>
+                            <a class="btn white js-close-popup">Отменить</a>
+                        </div>
+                    </form>  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="popup add-hall hidden" id="popup-add-hall">
+        <div class="container">
+            <div class="form">
+                <div class="form-title">
+                    <h2 class="title">Добавление зала</h2>
+                    <div class="exit-svg js-close-popup">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="22" height="22" fill="url(#pattern0_59_41)"/>
+                        <defs>
+                        <pattern id="pattern0_59_41" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_59_41" transform="scale(0.00390625)"/>
+                        </pattern>
+                        <image id="image0_59_41" width="256" height="256" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAABnlBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////aMUgUAAAAiXRSTlMAAQIDBAUGBwgJCgsMDQ4PERMUFRcYGRscHR8gISIjJSYnKistLi8wMjM0OD9AQUNFR0lKTU9QUlRWV1hbXGFiZmdrbG1vcHFzdHV3eXt+f4CIiYuMjpKVmJqeoKKjpaaoqquvsLK0t7m6vL7AwcPFyszOz9PV2tze4OLk5ujp6+3v8fP19/n7/QNGy6MAAAdiSURBVHja5d0JW5RVGMbxMwzIoqKYpraapeaCtu9llhVuWVm2qFmplalFlmLmgkMCz7eOTYKYmfcsz3Kfw/kC9/n9Hby83nEG5wJPV1//yhUO8tR6VvX31iUHnjxwaYJmzh9Hn+2Ewvft/eLm7NUa37++QWbiwzFaeCZProfhb/1p0dXoxsvsL4T6EC09p1ZC8DcNL71a4znejcduU7Mz8TzAT/7Rplejy5x/Om9Qq3OyZuzv/rXV1ca2sI0cptbnfN3Uv2qkzd12M40cp3bnF8sCq2+1vduggt+0QIWfp0CV37BApZ+jQLXfrICHP72Aj9+ogJc/tYCf36SApz+tgK/foIC3P6WAv1+9QIA/vkCIX7lAkD+2QJhftUCgP65A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"/>
+                        </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="form-block" id="add-hall-form">
+                    <form action="" method="get" class="login-form">
+                        <div class="form-item">
+                            <label for="hall-name" class="input-label">Название зала</label>
+                            <input type="text" class="form-input" id="hall-name" name="hall-name">
+                        </div>
+                        <div class="action-list">
+                            <button type="submit" class="btn">Добавить фильм</button>
+                            <a class="btn white js-close-popup">Отменить</a>
+                        </div>
+                    </form>  
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+<script src="../js/admin-index.js" type="module"></script>
+</html>

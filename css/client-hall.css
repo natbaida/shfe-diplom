@@ -1,0 +1,156 @@
+.film-about {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #F1EBE6;
+    opacity: .95;
+}
+
+.film-time {
+    font-weight: 300;
+    font-size: 14px;
+    margin-top: 7px;
+    margin-bottom: 8px;
+}
+
+.film-hall {
+    font-weight: 700;
+}
+
+.tap-block {
+    display: none;
+}
+
+.film-name, .film-hall {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.hall-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #171D24;
+    opacity: 1 !important;
+    width: 100%;
+    height: 376px;
+    position: relative;
+}
+
+.seats-legend {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 375px;
+    gap: 20px;
+    color: #fff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    position: absolute;
+    bottom: 15px;
+    right: calc(50% - 240px)
+}
+
+.screen-hall {
+    align-items: center;
+    margin: 40px 0 20px 0;
+}
+
+.seats-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.seat {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: #525252 solid 1px;
+    border-radius: 4px;
+}
+
+.seats-display {
+    display: flex;
+
+}
+
+.display-name {
+    margin-left: 5px;
+}
+
+.seats-display.price {
+    width: 195px;
+}
+
+.cube {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #525252;
+}
+
+.seat-standart {
+    background-color: #fff;
+}
+
+.seat-vip {
+    background-color: #F9953A;
+}
+
+.seat-taken {
+    background-color: transparent;
+}
+
+.selected-seat {
+    background-color: #25C4CE;
+    box-shadow: 0px 0px 4px 0px #16A6AF;
+}
+
+.booking-button {
+    background-color: #F1EBE6;
+    opacity: .95;
+    padding: 30px;
+}
+
+.btn-booking {
+    margin: 0 auto;
+    width: 232px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .tap-block {
+        display: flex;
+        justify-self: center;
+        align-items: center;
+
+    }
+
+    .tap-img {
+        width: 24px;
+        height: 32px;
+
+    }
+
+    .tap-text {
+        width: 67px;
+        height: 64px;
+        text-align: center;
+        font-family: Roboto;
+        font-weight: 300;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 390px) {
+    .seats-display.price {
+        width: 170px;
+    }
+
+    .seats-legend {
+        right: 0;
+        max-width: 100%;
+        padding-left: 60px;
+    }
+}

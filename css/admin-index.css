@@ -1,0 +1,522 @@
+.section-top {
+    background-color: #63536C;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 35px;
+}
+
+.section-container {
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    border: 4px solid #BC95D6;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    background-color: #fff;
+    margin-right: 20px;
+    position: relative;
+    z-index: 3;
+}
+
+.form-section {
+    position: relative;
+    z-index: 2;
+}
+
+.form-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5.6%;
+    background-color: #BC95D6;
+    z-index: 1;
+    width: 2px;
+    height: 100%;
+}
+
+.form-section:first-child::before {
+    top: 42px;
+}
+
+.form-section:last-child::before {
+    top: 0;
+    height: 40px;
+}
+
+.section-name {
+    font-size: 22px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.section-area {
+    background-color: #EAE9EB;
+    opacity: .95;
+    padding: 35px 35px 35px 104px;
+    z-index: 0;
+    position: relative;
+}
+
+.section-area-text {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+.section-top svg {
+    cursor: pointer;
+}
+
+.delete-img {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px 0px #0000001F;
+    box-shadow: 0px 3px 3px 0px #0000003D;
+    position: relative;
+    cursor: pointer;
+    border: 0;
+}
+
+.delete-img::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    background-image: url(/assets/icons/delete.png);
+    background-size: cover;
+}
+
+.hall-info {
+    display: flex;
+}
+
+.halls-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.hall-number {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.create-hall-btn {
+    width: 159px;
+}
+
+
+.hall-select-btn-list {
+    display: flex;
+    align-items: center;
+    margin-bottom: 34px;
+}
+
+.hall-select-btn {
+    width: 81px;
+    height: 42px;
+    box-sizing: border-box;
+    background-color: #FFF;
+    opacity: .45;
+    box-shadow: 0px 0px 2px 0px #0000001F;
+    box-shadow: 0px 2px 2px 0px #0000003D;
+    box-shadow: 0px 6px 8px 0px #0000003D;
+    padding: 13px 21px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    color: #000;
+}
+
+.hall-select-btn.active {
+    width: 90px;
+    height: 46px;
+    opacity: 1;
+    font-weight: 900;
+    font-size: 15px;   
+}
+
+.places-count-block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.places-count {
+    display: flex;
+    flex-direction: column;
+}
+
+.x {
+    margin-left: 13px;
+    margin-right: 14px;
+    color: #848484;
+    margin-top: 14px;
+}
+
+.input-places-label {
+    color: #848484;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+
+.input-places {
+    padding: 9px;
+    width: 100px;
+    height: 36px;
+    border-radius: 0;
+    border: 1px solid #b7b7b7;
+}
+
+.seats-legend {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.seat {
+    display: flex;
+    align-items: center;
+    margin-right: 23px;
+}
+
+.cube {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+
+}
+
+.empty-seat-cube {
+    background-color: #C4C4C4;
+}
+
+.vip-seat-cube {
+    background-color: #C4C4C4;
+}
+
+.occupied-seat-cube {
+    background-color: #C4C4C4;
+}
+
+.seats-name {
+    color: #848484;
+    margin-left: 4px;
+}
+
+.btn-layout {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.btn {
+    width: 146px;
+    height: 40px;
+}
+
+.btn.white {
+    background-color: #fff;
+    color: #63536c;
+    width: 121px;
+}
+
+.btn.add-action {
+    width: 194px;
+    margin-bottom: 12px;
+}
+
+.btn.open-sale {
+    width: 270px;
+    margin: 0 auto;
+}
+
+.open-ready-text {
+    text-align: center;
+    margin-bottom: 29px;
+}
+
+.select-hall-text {
+    margin-bottom: 29px;
+}
+
+.hall-select-btn-list.last {
+    margin-bottom: 27px;
+}
+
+.change-seat-text {
+    margin: 11px 0;
+    color: #848484;
+}
+
+.scheme {
+    width: 100%;
+    height: 450px;
+    border: 1px solid #000;
+    padding-top: 26px;
+    padding-bottom: 36px;
+    margin-bottom: 26px;
+    box-sizing: border-box;
+}
+
+.scheme h3 {
+    text-align: center;
+    letter-spacing: 19px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.choose-price {
+    margin-bottom: 12px;
+    font-size: 16px;
+
+}
+
+.prices-full-block {
+    display: flex;
+    align-items: center;
+}
+
+.prices-full-block.first {
+    margin-bottom: 11px;
+}
+
+.btn-layout.margin-t {
+    margin-top: 20px;
+}
+
+.cube.common {
+    background-color: #c4c4c4;
+    border: 1px solid #393939;
+    margin: 0 3px;
+}
+
+.cube.vip {
+    background-color: #B0D6D8;
+    background-image: url(../assets/images/vip-cube.png);
+    border: 1px solid #0A828A;
+    margin: 0 3px;
+}
+
+.cube.occupied {
+    background-color: transparent;
+    border: 1px solid #c4c4c4;
+    margin: 0 3px;
+}
+
+.price-info {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    color: #848484;
+    margin-left: 4px;
+}
+
+.input-places.short {
+    width: 74px;
+}
+
+.places-count {
+    width: 100px;
+}
+
+.films-list {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 51px;
+}
+
+.film-item {
+    background-color: #CAFF85;
+    display: flex;
+    position: relative;
+    width: 259px;
+    height: 52px;
+    border: 1px solid rgb(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+.film-img {
+    width: 38px;
+    height: 50px;
+}
+
+.film-name {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.film-duration {
+    opacity: .7;
+    font-size: 14px;
+}
+
+.film-item-info {
+    max-width: 201px;
+    margin-left: 10px;
+
+}
+
+.delete-img.film-icon {
+    bottom: 2px;
+    right: 2px;
+    position: absolute;
+}
+
+.schedule {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.schedule-item {
+    margin-bottom: 35px;
+}
+
+.schedule-item:last-child {
+    margin-bottom: 52px;
+}
+
+.schedule-films-list {
+    border: 1px solid #848484;
+    width: 720px;
+    height: 60px;
+}
+
+.section-area.hidden {
+    display: none;
+}
+
+.section-container.no-before::before {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .schedule-films-list {
+        width: 552px;
+    }
+}
+
+@media (max-width: 390px) {
+    .circle {
+        width: 22px;
+        height: 22px;
+    }
+
+    .form-section::before {
+        content: none;
+    }
+
+    .section-top {
+        padding: 20px;
+    }
+
+    .prices-full-block:last-child {
+        margin-bottom: 29px;
+    }
+
+    .schedule-films-list {
+        width: 328px;
+    }
+
+    .seats-name {
+        font-size: 14px;
+    }
+
+    .seat:last-child {
+        margin-top: 12px;
+    }
+
+    .section-area {
+        padding: 30px;
+    }
+
+    .btn.add-action {
+        margin-bottom: 36px;
+    }
+}
+
+.hall-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.hall-row {
+    display: flex;
+    gap: 10px;
+}
+
+.hall-seat {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.hall-seat.standart {
+    border: 1px solid #393939;
+    background-color: #c4c4c4;
+}
+
+.hall-seat.vip {
+    background-color: #B0D6D8;
+    background-image: url(../assets/images/vip-cube.png);
+    border: 1px solid #0A828A;
+}
+
+.hall-seat.disabled {
+    border: 1px solid #c4c4c4;
+    background-color: transparent;
+}
+
+.schedule {
+    margin-top: 12px;
+}
+
+.schedule-hall {
+    margin-bottom: 30px;
+}
+
+.schedule-line {
+    position: relative;
+    height: 60px;
+    border: 1px solid #848484;
+    width: 100%;
+    max-width: 720px;
+    min-width: 720px;
+    overflow: hidden;
+}
+
+.seance-block {
+    position: absolute;
+    top: 10px;
+    height: 40px;
+    min-width: 65px;
+    padding: 9px 6px 11px 10px;
+    background-color: #85FF89;
+    box-sizing: border-box;
+    font-size: 10px;
+    color: #000;
+    border: 1px solid rgb(0, 0, 0, 0.3);
+}

@@ -1,0 +1,16 @@
+.ticket-booking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+
+.btn-booking {
+    width: 338px;
+    height: 40px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+}

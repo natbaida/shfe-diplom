@@ -1,0 +1,37 @@
+body {
+    background-color: #272524;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("/assets/images/admin-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.header {
+    padding: 35px 0 35px 140px;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 390px) {
+    .header {
+        padding: 35px;
+    }
+
+    .logo {
+        margin: 0 auto;
+    }
+}

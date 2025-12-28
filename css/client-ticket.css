@@ -1,0 +1,9 @@
+.qr-code-booked {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin: 30px auto;
+    overflow: hidden;
+}
