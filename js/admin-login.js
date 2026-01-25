@@ -15,6 +15,8 @@ form.addEventListener('submit', (event) => {
     loginAdmin(email, password)
     .then(data => {
         window.location.href = '/shfe-diplom/html/admin-index.html';
+        // window.location.href = '../html/admin-index.html';
+
     })
     .catch(error => {
         alert(error.message);

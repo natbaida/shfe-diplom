@@ -1,9 +1,11 @@
 body {
     background-color: #C56D01;
     background-image: url("/shfe-diplom/assets/images/main-bg.jpg");
+    /* background-image: url("../assets/images/main-bg.jpg"); */
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center -280px;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .header .container {
@@ -23,12 +25,14 @@ body {
 .book-ticket {
     padding: 20px 15px 35px 15px;
     background-color: #F1EBE6;
+    opacity: 0.95;
     position: relative;
 }
 
 .book-ticket::before {
     content: "";
     background-image: url(/shfe-diplom/assets/images/before.png);
+    /* background-image: url(../assets/images/before.png); */
     position: absolute;
     display: block;
     height: 3px;
@@ -40,6 +44,7 @@ body {
 .book-ticket::after {
     content: "";
     background-image: url(/shfe-diplom/assets/images/after.png);
+    /* background-image: url(../assets/images/after.png); */
     position: absolute;
     height: 3px;
     width: 100%;
@@ -49,6 +54,7 @@ body {
 
 .ticket-top {
     background-color: #F1EBE6;
+    opacity: 0.95;
     padding: 25px 15px;
     margin-bottom: 6px;
     position: relative;
@@ -57,6 +63,7 @@ body {
 .ticket-top::before {
     content: "";
     background-image: url(/shfe-diplom/assets/images/before.png);
+    /* background-image: url(../assets/images/before.png); */
     position: absolute;
     height: 3px;
     width: 100%;
@@ -67,6 +74,7 @@ body {
 .ticket-top::after {
     content: "";
     background-image: url(/shfe-diplom/assets/images/after.png);
+    /* background-image: url(../assets/images/after.png); */
     position: absolute;
     height: 3px;
     width: 100%;
@@ -105,7 +113,18 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-position: right top;
+        background-size: 140%;
+    }
+
     .book-ticket {
         padding: 20px 15px 30px;
+    }
+}
+
+@media (max-width: 390px) {
+    body {
+        background-size: 290%;
     }
 }

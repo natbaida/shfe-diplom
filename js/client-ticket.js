@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!bookingDataRaw || !ticketsRaw || ticketsRaw === 'undefined') {
         alert('Нет данных о бронировании.')
         location.href = '/shfe-diplom/index.html';
+        // location.href = '../index.html';
         return;
     }
     const bookingData = JSON.parse(bookingDataRaw);
@@ -34,13 +35,13 @@ function renderQRCode(booking, tickets) {
         Цена: ${ticket.ticket_price} ₽
             `.trim()).join('\n----------------\n');
     const qr = QRCreator(qrText, {
-        mode: 4,
-        eccl: 2,
+        mode: -1,
+        eccl: 0,
         version: -1,
         mask: -1,
-        modsize: -1,
-        margin: 4,
-        image: 'html'
+        image: "PNG",
+        modsize: 3,
+        margin: 4
     });
     if (qr.error) {
         qrContainer.textContent = `Ошибка генерации QR-кода: ${qr.error}`;

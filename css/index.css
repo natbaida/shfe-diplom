@@ -25,7 +25,6 @@
     opacity: .9;
     border-radius: 2px;
     cursor: pointer;
-
 }
 
 .date-item p {
@@ -141,6 +140,10 @@
     cursor: pointer;
 }
 
+.date-item.weekend {
+    color: red;
+}
+
 @media (max-width: 768px) {
     .date-item {
         flex: 1 1 auto;
@@ -173,6 +176,7 @@
         min-width: 40px;
         max-width: 80px;
         height: 40px;
+        padding: 10px;
     }
 
     .date-item p {
@@ -188,6 +192,7 @@
         min-width: 60px;
         max-width: 80px;
         height: 48px;
+        padding: 10px;
     }
 
     .date-item.today {

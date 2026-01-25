@@ -10,7 +10,6 @@ async function loadPage() {
         const data = await getAllData();
         renderFilms(data);
     } catch (error) {
-        alert('Ошибка загрузки данных.')
         console.error(error);
     }
 }
@@ -64,19 +63,22 @@ function renderHalls(halls, seances, film) {
                 <p>${hall.hall_name}</p>
             </div>
             <div class="time-list">
-                ${hallSeances.map(seance => `
-                   <button 
-                        class="time-item"
-                        data-seance-id="${seance.id}" 
+              ${hallSeances.map(seance => {  
+            const isPast = isSeancePast(seance.seance_time);
+            return `
+                    <button 
+                        class="time-item ${isPast ? 'disabled' : ''}"   
+                        data-seance-id="${seance.id}"
                         data-seance-time="${seance.seance_time}"
                         data-film-name="${film.film_name}"
                         data-hall-id="${hall.id}"
                         data-hall-name="${hall.hall_name}"
                         data-hall-price-standart="${hall.hall_price_standart}"
-                        data-hall-price-vip="${hall.hall_price_vip}">
+                        data-hall-price-vip="${hall.hall_price_vip}"
+                        ${isPast ? 'disabled' : ''}>
                         ${seance.seance_time}
                     </button>
-                `).join('')}
+                `}).join('')}
             </div>
         `;
     });
@@ -120,16 +122,33 @@ function renderDates() {
         date.setDate(startDate.getDate() + i);
         const isoDate = formatDate(date);
         const dayNumber = date.getDate();
-        const day = isoDate === getTodayDate() ? 'Сегодня': date.toLocaleDateString('ru-RU', {weekday: 'short'});
+        const dayOfWeek = date.getDay();
+        const weekDayName = date.toLocaleDateString('ru-RU', {weekday : 'short'});
         const dateEl = document.createElement('div');
+        let topText, bottomText;
         dateEl.className = 'date-item';
+
+        if(isoDate === getTodayDate()) {
+            topText = 'Сегодня';
+            bottomText = `${weekDayName}, ${dayNumber}`;
+        } else {
+            topText = weekDayName + ",";
+            bottomText = dayNumber.toString();
+        }
+
+        if(dayOfWeek === 0 || dayOfWeek === 6) {
+            dateEl.classList.add("weekend")
+        } 
+
         if(isoDate === selectedDate) {
             dateEl.classList.add('active');
         }
+
         dateEl.innerHTML = `
-            <p>${day}</p>
-            <p>${dayNumber}</p>
+            <p class="today">${topText}</p>
+            <p>${bottomText}</p>
         `;
+
         dateEl.addEventListener('click', () => {
             selectedDate = isoDate;
             renderDates();
@@ -173,5 +192,24 @@ document.addEventListener('click', (e) => {
     localStorage.setItem('hallPriceStandart', hallPriceStandart);
     localStorage.setItem('hallPriceVip', hallPriceVip);
     window.location.href = '/shfe-diplom/html/client-hall.html';
+    // window.location.href = '../html/client-hall.html';
 });
 
+function isSeancePast(seanceTime) {
+    const now = new Date();
+    const todayDateStr = getTodayDate();
+    const selectedDateObj = new Date(selectedDate);
+    const todayDateObj = new Date(todayDateStr);
+    if(selectedDateObj < todayDateObj) {
+        return true;
+    }
+    if(selectedDateObj > todayDateObj) {
+        return false;
+    }
+    const currentHours = now.getHours();
+    const currentMinuts = now.getMinuts();
+    const currentTotalMinuts = currentHours * 60 + currentMinuts;
+    const [seanceHours, seanceMinuts] = seanceTime.split(':').map(Number);
+    const seanceTotalMinuts = seanceHours * 60 + seanceMinuts;
+    return seanceTotalMinuts <= currentTotalMinuts;
+};

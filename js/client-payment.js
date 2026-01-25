@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             );
 
             location.href = '/shfe-diplom/html/client-ticket.html';
+            // location.href = '../html/client-ticket.html';
 
         } catch (err) {
             console.error(err);

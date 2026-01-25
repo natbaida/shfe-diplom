@@ -89,3 +89,47 @@
     display: none;
 }
 
+@media (max-width: 768px) {
+    .form {
+        width: 768px;
+    }
+
+    .popup .container {
+        margin: 0;
+    }
+
+    .login-form {
+        padding: 0 7px 0 7px;
+    }
+
+    .form-section::before {
+        left: 7.25%;
+    }
+}
+
+@media (max-width: 390px) {
+    .form-block {
+        padding: 0;
+    }
+
+    .form, .login-form {
+        width: 390px;
+    }
+
+    .form-input {
+        width: 370px;
+    }
+
+    .login-form {
+        padding: 16px 10px 35px 10px;
+    }
+
+    .action-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn.white {
+        width: 200px;
+    }
+}

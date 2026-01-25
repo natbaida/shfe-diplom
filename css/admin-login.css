@@ -67,8 +67,16 @@ main .container {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-attachment: fixed;
+    }
+    
     .header {
         padding: 14px;
+    }
+
+    .login-form {
+        width: 100%;
     }
 }
 

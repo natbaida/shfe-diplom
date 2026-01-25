@@ -3,10 +3,10 @@ body {
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("/shfe-diplom/assets/images/admin-bg.jpg");
+        /* url("../assets/images/admin-bg.jpg"); */
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center;
     background-size: cover;
-    background-attachment: fixed;
     min-height: 100vh;
 }
 
@@ -21,6 +21,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-attachment: fixed;
+    }
+
     .header {
         padding: 14px;
     }
