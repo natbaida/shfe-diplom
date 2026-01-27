@@ -2,8 +2,7 @@ body {
     background-color: #272524;
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("/shfe-diplom/assets/images/admin-bg.jpg");
-        /* url("../assets/images/admin-bg.jpg"); */
+        url("../assets/images/admin-bg.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

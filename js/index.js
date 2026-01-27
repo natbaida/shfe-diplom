@@ -12,7 +12,7 @@ async function loadPage() {
     } catch (error) {
         console.error(error);
     }
-}
+};
 
 const filmsList = document.getElementById('films-list');
 
@@ -24,7 +24,7 @@ function renderFilms({films, halls, seances}) {
         const filmElement = document.createElement('div');
         filmElement.classList.add('film-item');
         filmElement.innerHTML = `
-            <div class="film-item">
+            <div class="film-item-el">
                 <div class="film-info">
                     <img class="film-image" src="${film.film_poster}" alt="Постер">
                     <div class="film-description">
@@ -87,7 +87,7 @@ function renderHalls(halls, seances, film) {
 
 function getTodayDate() {
     const today = new Date();
-    return formatDate(today);
+    return today.toISOString().split('T')[0];
 };
 
 let startDate = new Date();
@@ -117,25 +117,27 @@ function renderDates() {
         });
         datesList.appendChild(leftArrow);
     }
+
     for(let i = 0; i < 7; i++) {
         const date = new Date(startDate);
         date.setDate(startDate.getDate() + i);
         const isoDate = formatDate(date);
         const dayNumber = date.getDate();
         const dayOfWeek = date.getDay();
-        const weekDayName = date.toLocaleDateString('ru-RU', {weekday : 'short'});
+        const weekdaysShort = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+        const weekdayName = weekdaysShort[dayOfWeek];
         const dateEl = document.createElement('div');
         let topText, bottomText;
-        dateEl.className = 'date-item';
 
         if(isoDate === getTodayDate()) {
             topText = 'Сегодня';
-            bottomText = `${weekDayName}, ${dayNumber}`;
+            bottomText = `${weekdayName}, ${dayNumber}`;
         } else {
-            topText = weekDayName + ",";
+            topText = weekdayName + ',';
             bottomText = dayNumber.toString();
         }
 
+        dateEl.className = 'date-item';
         if(dayOfWeek === 0 || dayOfWeek === 6) {
             dateEl.classList.add("weekend")
         } 
@@ -191,8 +193,7 @@ document.addEventListener('click', (e) => {
     localStorage.setItem('hallName', hallName);
     localStorage.setItem('hallPriceStandart', hallPriceStandart);
     localStorage.setItem('hallPriceVip', hallPriceVip);
-    window.location.href = '/shfe-diplom/html/client-hall.html';
-    // window.location.href = '../html/client-hall.html';
+    window.location.href = '../html/client-hall.html';
 });
 
 function isSeancePast(seanceTime) {
@@ -207,7 +208,7 @@ function isSeancePast(seanceTime) {
         return false;
     }
     const currentHours = now.getHours();
-    const currentMinuts = now.getMinuts();
+    const currentMinuts = now.getMinutes();
     const currentTotalMinuts = currentHours * 60 + currentMinuts;
     const [seanceHours, seanceMinuts] = seanceTime.split(':').map(Number);
     const seanceTotalMinuts = seanceHours * 60 + seanceMinuts;

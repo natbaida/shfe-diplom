@@ -17,10 +17,6 @@
     font-weight: 700;
 }
 
-.film-top {
-    margin-bottom: 80px;
-}
-
 .tap-block {
     display: none;
 }
@@ -118,7 +114,9 @@
 
 .seat-disabled {
     background-color: transparent;
-    border: 1px solid #525252;
+    border: transparent;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .booking-button {

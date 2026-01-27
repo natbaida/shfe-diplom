@@ -89,6 +89,10 @@
     display: none;
 }
 
+.exit-svg {
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
     .form {
         width: 768px;
@@ -117,7 +121,11 @@
     }
 
     .form-input {
-        width: 370px;
+        width: 358px;
+    }
+
+    .form-item {
+        padding: 0 6px;
     }
 
     .login-form {

@@ -10,13 +10,26 @@ const vipPrice = Number(localStorage.getItem('hallPriceVip'));
 document.getElementById('standart-price').innerText = standartPrice;
 document.getElementById('vip-price').innerText = vipPrice;
 
+function renderFilmInfo() {
+    const filmName = localStorage.getItem('filmName');
+    const hallName = localStorage.getItem('hallName');
+    const seanceTime = localStorage.getItem('seanceTime');
+    
+    if(!filmName || !hallName || !seanceTime) {
+        alert('Нет данных о фильме.')
+        return;
+    }
+    document.querySelector('.film-name').textContent = filmName;
+    document.querySelector('.film-hall').textContent = hallName;
+    document.getElementById('film-time').textContent = seanceTime;
+};
+
 const seanceId = localStorage.getItem('seanceId');
 const date = localStorage.getItem('date');
 let selectedSeats = [];
 if (!seanceId || !date) {
     alert('Нет данных о сеансе');
-    location.href = '/shfe-diplom/index.html';
-    // location.href = '../index.html';
+    location.href = '../index.html';
 }
 
 async function loadHall() {
@@ -90,8 +103,7 @@ bookingBtn.addEventListener('click', () => {
 
     localStorage.setItem('bookingData', JSON.stringify(bookingData));
 
-    window.location.href = '/shfe-diplom/html/client-payment.html';
-    // window.location.href = '../html/client-payment.html';
+    window.location.href = '../html/client-payment.html';
 });
 
 function calculateTotalPrice() {
@@ -116,17 +128,4 @@ function toggleSeat(seat) {
         selectedSeats.push({ row, place, coast });
         seat.classList.add('selected-seat');
     }
-}
-
-function renderFilmInfo() {
-    const filmName = localStorage.getItem('filmName');
-    const hallName = localStorage.getItem('hallName');
-    const seanceTime = localStorage.getItem('seanceTime');
-    if(!filmName || !hallName || !seanceTime) {
-        alert('Нет данных о фильме.')
-        return;
-    }
-    document.querySelector('.film-name').textContent = filmName;
-    document.querySelector('.film-hall').textContent = hallName;
-    document.getElementById('film-time').textContent = seanceTime;
 };

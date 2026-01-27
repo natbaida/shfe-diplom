@@ -734,13 +734,30 @@ function addTimelineMarkers() {
     document.querySelectorAll('.schedule-line').forEach(line => {
         const timeline = document.createElement('div');
         timeline.className = 'timeline-marker';
-        for (let hour = 0; hour <= 24; hour += 2) {
+
+        const hallId = Number(line.dataset.hallId);
+        const hallSeances = seances
+            .filter(s => s.seance_hallid === hallId)
+            .map(s => normalizeSeance(s))
+            .filter(Boolean)
+            .sort((a, b) => a.start - b.start);
+
+        hallSeances.forEach(seance => {
             const marker = document.createElement('div');
             marker.className = 'time-marker';
-            marker.style.left = `${(hour / 24) * 100}%`;
-            marker.textContent = `${hour.toString().padStart(2, '0')}:00`;
+            marker.style.left = `${(seance.start / (24 * 60)) * 100}%`;
+            marker.textContent = minutesToTime(seance.start);
+
             timeline.appendChild(marker);
-        };
+        });
+
+        if (hallSeances.length === 0) {
+            const noSeancesMarker = document.createElement('div');
+            noSeancesMarker.className = 'no-seances-marker';
+            noSeancesMarker.textContent = 'Нет сеансов';
+            timeline.appendChild(noSeancesMarker);
+        }
+
         line.parentNode.insertBefore(timeline, line);
     });
 };
@@ -786,6 +803,7 @@ function createSeanceBlock(seance, film) {
         'rgba(255, 251, 133, 0.7)'
     ];
     block.style.backgroundColor = colors[colorIndex];
+    block.style.border = `2px solid ${colors[colorIndex]}`
 
     block.innerHTML = `
         <div class="seance-title">${film.film_name}</div>

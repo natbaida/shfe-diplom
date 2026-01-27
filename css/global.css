@@ -1,3 +1,35 @@
+@font-face {
+    font-family: "Roboto";
+    src: url('../assets/fonts/Roboto/Roboto-Regular.woff2') format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../assets/fonts/Roboto/Roboto-Thin.woff2') format("woff2");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../assets/fonts/Roboto/Roboto-Light.woff2') format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url('../assets/fonts/Roboto/Roboto-Bold.woff2') format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,38 +46,6 @@ body {
 
 ol, ul {
     list-style: none;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url('/shfe-diplom/assets/fonts/Roboto/Roboto-Regular.woff2') format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url('/shfe-diplom/assets/fonts/Roboto/Roboto-Thin.woff2') format("woff2");
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url('/shfe-diplom/assets/fonts/Roboto/Roboto-Light.woff2') format("woff2");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Roboto";
-    src: url('/shfe-diplom/assets/fonts/Roboto/Roboto-Bold.woff2') format("woff2");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
 }
 
 *,

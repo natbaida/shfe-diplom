@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ticketsRaw = localStorage.getItem('ticketsResult');
     if(!bookingDataRaw || !ticketsRaw || ticketsRaw === 'undefined') {
         alert('Нет данных о бронировании.')
-        location.href = '/shfe-diplom/index.html';
-        // location.href = '../index.html';
+        location.href = '../index.html';
         return;
     }
     const bookingData = JSON.parse(bookingDataRaw);
