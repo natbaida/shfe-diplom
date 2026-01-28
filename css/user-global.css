@@ -2,9 +2,9 @@ body {
     background-color: #C56D01;
     background-image: url("../assets/images/main-bg.jpg");
     background-repeat: no-repeat;
-    background-position: center -280px;
+    background-position: center;
     background-size: cover;
-    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 .header .container {
@@ -108,21 +108,12 @@ body {
 }
 
 @media (max-width: 768px) {
-    body {
-        background-position: right top;
-        background-size: 140%;
-    }
-
     .book-ticket {
         padding: 20px 15px 30px;
     }
 }
 
 @media (max-width: 390px) {
-    body {
-        background-size: 180%;
-    }
-
     .book-ticket {
         margin-bottom: 160px;
     }
