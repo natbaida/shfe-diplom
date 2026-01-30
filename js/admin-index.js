@@ -63,9 +63,9 @@ function renderHallOptions(halls) {
         const option = document.createElement('option');
         option.value = hall.id;
         option.textContent = hall.hall_name;
-        hallSelect.appendChild(option);
+        hallSelect.append(option);
     });
-};
+}
 
 function renderFilmOptions(films) {
     filmSelect.innerHTML = '<option value="">Выберите фильм</option>';
@@ -74,9 +74,9 @@ function renderFilmOptions(films) {
         const option = document.createElement('option');
         option.value = film.id;
         option.textContent = film.film_name;
-        filmSelect.appendChild(option);
+        filmSelect.append(option);
     });
-};
+}
 
 function renderFilms(films) {
     filmsList.innerHTML = '';
@@ -99,9 +99,9 @@ function renderFilms(films) {
             <button class="delete-img film-icon" title="Удалить фильм"></button>
         `;
 
-        filmsList.appendChild(filmCard);
+        filmsList.append(filmCard);
     });
-};
+}
 
 filmsList.addEventListener('click', async (e) => {
     const deleteBtn = e.target.closest('.film-icon');
@@ -181,7 +181,7 @@ function setActiveHall(hallId) {
     renderHallSelectButtons(allHalls);
     onHallChange(hallId);
     console.log('Активный зал:', hallId);
-};
+}
 
 function renderHalls(halls) {
     hallsList.innerHTML = '';
@@ -193,9 +193,9 @@ function renderHalls(halls) {
             <div class="hall-number">— ${hall.hall_name}</div>
             <div class="delete-img" title="Удалить зал"></div>
         `;
-        hallsList.appendChild(li);
+        hallsList.append(li);
     });
-};
+}
 
 const rowsInput = document.getElementById('rows');
 const placesInput = document.getElementById('places');
@@ -212,13 +212,13 @@ function onHallChange(hallId) {
         : createEmptyConfig(hallRows, hallPlaces);
     renderHallGrid();
     renderPrices(hall);
-};
+}
 
 function createEmptyConfig(rows, places) {
     return Array.from({ length: rows }, () =>
         Array.from({ length: places }, () => 'standart')
     );
-};
+}
 
 hallGrid.addEventListener('click', (e) => {
     const seat = e.target.closest('.hall-seat');
@@ -237,7 +237,7 @@ function renderPrices(hall) {
     const vipInput = document.getElementById('vip-price');
     if (commonInput) commonInput.value = hall.hall_price_standart || '';
     if (vipInput) vipInput.value = hall.hall_price_vip || '';
-};
+}
 
 function renderHallGrid() {
     hallGrid.innerHTML = '';
@@ -251,11 +251,11 @@ function renderHallGrid() {
             seat.classList.add(seatType);
             seat.dataset.row = row;
             seat.dataset.place = place;
-            rowEl.appendChild(seat);
+            rowEl.append(seat);
         };
-        hallGrid.appendChild(rowEl);
+        hallGrid.append(rowEl);
     };
-};
+}
 
 function renderHallSelectButtons(halls) {
     document.querySelectorAll('.hall-select-btn-list').forEach(container => {
@@ -268,10 +268,10 @@ function renderHallSelectButtons(halls) {
             if (hall.id === activeHallId) {
                 btn.classList.add('active');
             }
-            container.appendChild(btn);
+            container.append(btn);
         });
     });
-};
+}
 
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('.hall-select-btn');
@@ -455,7 +455,7 @@ function rebuildHallConfig() {
     hallPlaces = places;
     hallConfig = createEmptyConfig(rows, places);
     renderHallGrid();
-};
+}
 
 rowsInput.addEventListener('change', rebuildHallConfig);
 placesInput.addEventListener('change', rebuildHallConfig);
@@ -499,7 +499,7 @@ cancelBtn.addEventListener('click', () => {
 function timeToMinutes(time) {
     const [h, m] = time.split(':').map(Number);
     return h * 60 + m;
-};
+}
 
 function normalizeSeance(seance) {
     const film = allFilms.find(f => f.id === seance.seance_filmid);
@@ -513,7 +513,7 @@ function normalizeSeance(seance) {
         duration,
         end
     };
-};
+}
 
 function isOverlap(newSeance, seancesInHall) {
     return seancesInHall.some(s =>
@@ -557,13 +557,13 @@ function openSeancePopup(filmId, hallId, start) {
     hallSelect.value = String(hallId);
     document.getElementById('seance-time').value =
         minutesToTime(Math.floor(start / TIME_STEP) * TIME_STEP);
-};
+}
 
 function minutesToTime(min) {
     const h = String(Math.floor(min / 60)).padStart(2, '0');
     const m = String(min % 60).padStart(2, '0');
     return `${h}:${m}`;
-};
+}
 
 window.addEventListener('resize', () => {
     renderSchedule();
@@ -583,7 +583,7 @@ function renderSchedule() {
             </div>
             <div class="schedule-line" data-hall-id="${hall.id}"></div>
         `;
-        schedule.appendChild(hallEl);
+        schedule.append(hallEl);
     });
     addTimelineMarkers();
     initTrashBins();
@@ -600,6 +600,7 @@ function initTrashBins() {
         trashBin.addEventListener('drop', handleTrashDrop);
     });
 }
+
 let activeTrashBin = null;
 
 function handleTrashDragOver(e) {
@@ -609,7 +610,7 @@ function handleTrashDragOver(e) {
         this.classList.add('active');
         activeTrashBin = this;
     }
-};
+}
 
 function handleTrashDragEnter(e) {
     e.preventDefault();
@@ -617,7 +618,7 @@ function handleTrashDragEnter(e) {
         this.classList.add('active');
         activeTrashBin = this;
     };
-};
+}
 
 function handleTrashDragLeave(e) {
     if (!this.contains(e.relatedTarget)) {
@@ -626,7 +627,7 @@ function handleTrashDragLeave(e) {
             activeTrashBin = null;
         };
     };
-};
+}
 
 async function handleTrashDrop(e) {
     e.preventDefault();
@@ -704,7 +705,7 @@ async function toggleHallStatus(hallId, newStatus, button) {
         console.error(err);
         alert('Ошибка при изменении статуса зала');
     };
-};
+}
 
 function updateSaleButtonText(button, isOpen) {
     if (!button) return;
@@ -748,19 +749,19 @@ function addTimelineMarkers() {
             marker.style.left = `${(seance.start / (24 * 60)) * 100}%`;
             marker.textContent = minutesToTime(seance.start);
 
-            timeline.appendChild(marker);
+            timeline.append(marker);
         });
 
         if (hallSeances.length === 0) {
             const noSeancesMarker = document.createElement('div');
             noSeancesMarker.className = 'no-seances-marker';
             noSeancesMarker.textContent = 'Нет сеансов';
-            timeline.appendChild(noSeancesMarker);
+            timeline.append(noSeancesMarker);
         }
 
         line.parentNode.insertBefore(timeline, line);
     });
-};
+}
 
 function renderSeances() {
     document.querySelectorAll('.schedule-line').forEach(line => {
@@ -776,10 +777,10 @@ function renderSeances() {
             const film = allFilms.find(f => f.id === seance.seance_filmid);
             if (!film) return;
             const block = createSeanceBlock(seance, film, line);
-            line.appendChild(block);
+            line.append(block);
         });
     });
-};
+}
 
 function createSeanceBlock(seance, film) {
     const block = document.createElement('div');
@@ -809,7 +810,7 @@ function createSeanceBlock(seance, film) {
         <div class="seance-title">${film.film_name}</div>
     `;
     return block;
-};
+}
 
 function checkOverlapsForHall(seances) {
     for (let i = 0; i < seances.length; i++) {
@@ -823,4 +824,4 @@ function checkOverlapsForHall(seances) {
             };
         };
     };
-};
+}

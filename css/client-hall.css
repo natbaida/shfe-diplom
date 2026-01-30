@@ -157,12 +157,16 @@
 
 @media (max-width: 390px) {
     .seats-display.price {
-        width: 170px;
+        width: 174px;
+    }
+    
+    .display-name {
+        font-size: 14px;
     }
 
     .seats-legend {
-        right: 0;
+        gap: 12px;
         max-width: 100%;
-        padding-left: 60px;
+        margin: 30px 30px 15px 60px;
     }
 }

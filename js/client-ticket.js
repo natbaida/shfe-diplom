@@ -18,7 +18,7 @@ function renderTicketInfo(data) {
     document.querySelector('.film-time').textContent = data.seanceTime;
     const seatsText = data.seats.map(seat => `Ряд ${seat.row} место ${seat.place}`).join(', ');
     document.querySelector('.film-seat').textContent = seatsText;
-};
+}
 
 function renderQRCode(booking, tickets) {
     const qrContainer = document.querySelector('.qr-code-booked');
@@ -47,4 +47,4 @@ function renderQRCode(booking, tickets) {
     } else {
         qrContainer.append(qr.result);
     }
-};
+}

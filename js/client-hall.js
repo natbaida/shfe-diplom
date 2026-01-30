@@ -22,7 +22,7 @@ function renderFilmInfo() {
     document.querySelector('.film-name').textContent = filmName;
     document.querySelector('.film-hall').textContent = hallName;
     document.getElementById('film-time').textContent = seanceTime;
-};
+}
 
 const seanceId = localStorage.getItem('seanceId');
 const date = localStorage.getItem('date');
@@ -76,10 +76,10 @@ function renderHall(config) {
                 ));
             }
 
-            rowEl.appendChild(seat);
+            rowEl.append(seat);
         });
 
-        container.appendChild(rowEl);
+        container.append(rowEl);
     });
 }
 
@@ -108,7 +108,7 @@ bookingBtn.addEventListener('click', () => {
 
 function calculateTotalPrice() {
     return selectedSeats.reduce((sum, seat) => sum + seat.coast, 0);
-};
+}
 
 
 function toggleSeat(seat) {
@@ -128,4 +128,4 @@ function toggleSeat(seat) {
         selectedSeats.push({ row, place, coast });
         seat.classList.add('selected-seat');
     }
-};
+}

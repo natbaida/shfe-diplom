@@ -12,7 +12,7 @@ async function loadPage() {
     } catch (error) {
         console.error(error);
     }
-};
+}
 
 const filmsList = document.getElementById('films-list');
 
@@ -49,21 +49,31 @@ function renderFilms({films, halls, seances}) {
                 </div>
             </div>
             `;
-        filmsList.appendChild(filmElement);
+        filmsList.append(filmElement);
     })
-};
+}
 
 function renderHalls(halls, seances, film) {
     let html = '';
     halls.forEach(hall => {
         const hallSeances = seances.filter(s => s.seance_hallid === hall.id);
         if(hallSeances.length === 0) return;
+
+        const sortedSeances = hallSeances.sort((a, b) => {
+            const timeToMinutes = (timeStr) => {
+                const [hours, minutes] = timeStr.split(':').map(Number);
+                return hours * 60 + minutes;
+            };
+
+            return timeToMinutes(a.seance_time) - timeToMinutes(b.seance_time);
+        });
+
         html += `
             <div class="hall">
                 <p>${hall.hall_name}</p>
             </div>
             <div class="time-list">
-              ${hallSeances.map(seance => {  
+              ${sortedSeances.map(seance => {
             const isPast = isSeancePast(seance.seance_time);
             return `
                     <button 
@@ -88,22 +98,21 @@ function renderHalls(halls, seances, film) {
 function getTodayDate() {
     const today = new Date();
     return today.toISOString().split('T')[0];
-};
+}
 
 let startDate = new Date();
 let selectedDate = getTodayDate();
 
 function formatDate(date) {
     return date.toISOString().split('T')[0];
-};
+}
 
 const datesList = document.querySelector('.dates-list');
+let hasScrolled = 0;
 
 function renderDates() {
     datesList.innerHTML = '';
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if(startDate > today) {
+    if (hasScrolled > 0) {
         const leftArrow = document.createElement('div');
         leftArrow.className = 'date-item arrow';
         leftArrow.innerHTML = `
@@ -112,13 +121,15 @@ function renderDates() {
             </svg>
         `;
         leftArrow.addEventListener('click', () => {
+            hasScrolled -= 1
             startDate.setDate(startDate.getDate() - 7);
             renderDates();
+            loadPage();
         });
-        datesList.appendChild(leftArrow);
+        datesList.append(leftArrow);
     }
 
-    for(let i = 0; i < 7; i++) {
+    for (let i = 0; i < 7; i++) {
         const date = new Date(startDate);
         date.setDate(startDate.getDate() + i);
         const isoDate = formatDate(date);
@@ -129,7 +140,7 @@ function renderDates() {
         const dateEl = document.createElement('div');
         let topText, bottomText;
 
-        if(isoDate === getTodayDate()) {
+        if (isoDate === getTodayDate()) {
             topText = 'Сегодня';
             bottomText = `${weekdayName}, ${dayNumber}`;
         } else {
@@ -138,11 +149,11 @@ function renderDates() {
         }
 
         dateEl.className = 'date-item';
-        if(dayOfWeek === 0 || dayOfWeek === 6) {
-            dateEl.classList.add("weekend")
-        } 
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+            dateEl.classList.add("weekend");
+        }
 
-        if(isoDate === selectedDate) {
+        if (isoDate === selectedDate) {
             dateEl.classList.add('active');
         }
 
@@ -155,11 +166,11 @@ function renderDates() {
             selectedDate = isoDate;
             renderDates();
             loadPage();
-        })
-        datesList.appendChild(dateEl);
-    } 
+        });
+        datesList.append(dateEl);
+    }
     renderArrow();
-};
+}
 
 function renderArrow() {
     const arrow = document.createElement('div');
@@ -171,11 +182,13 @@ function renderArrow() {
         </svg>
     `;
     arrow.addEventListener('click', () => {
+        hasScrolled += 1;
         startDate.setDate(startDate.getDate() + 7);
         renderDates();
+        loadPage();
     });
-    datesList.appendChild(arrow);
-};
+    datesList.append(arrow);
+}
 
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('.time-item');
@@ -213,4 +226,4 @@ function isSeancePast(seanceTime) {
     const [seanceHours, seanceMinuts] = seanceTime.split(':').map(Number);
     const seanceTotalMinuts = seanceHours * 60 + seanceMinuts;
     return seanceTotalMinuts <= currentTotalMinuts;
-};
+}

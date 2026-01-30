@@ -120,6 +120,10 @@
         width: 390px;
     }
 
+    .btn.white {
+        width: 121px;
+    }
+
     .form-input {
         width: 358px;
     }
@@ -137,7 +141,7 @@
         align-items: center;
     }
 
-    .btn.white {
+    .popup .btn.white {
         width: 200px;
     }
 }
